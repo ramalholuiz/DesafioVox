@@ -1,0 +1,31 @@
+{
+  "name": "saucedemo-automation",
+  "version": "1.0.0",
+  "description": "Cypress with Java and cucumber",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/preset-env": "^7.25.4",
+    "@badeball/cypress-cucumber-preprocessor": "^20.1.2",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.2",
+    "@cucumber/cucumber": "^10.9.0",
+    "@cucumber/cucumber-expressions": "^17.1.0",
+    "@cucumber/gherkin": "^29.0.0",
+    "cypress": "^13.14.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "esbuild": "^0.23.1"
+  },
+  "dependencies": {
+    "core-js": "^3.38.1",
+    "desafiotecnico": "file:",
+    "saucedemo-automation": "file:"
+  }
+}
