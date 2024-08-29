@@ -24,8 +24,13 @@
     "esbuild": "^0.23.1"
   },
   "dependencies": {
+    "@babel/plugin-transform-class-properties": "^7.25.4",
+    "@babel/plugin-transform-object-rest-spread": "^7.24.7",
     "core-js": "^3.38.1",
+    "cucumber-tag-expressions": "^2.0.3",
     "desafiotecnico": "file:",
+    "glob": "^11.0.0",
+    "inflight": "^1.0.6",
     "saucedemo-automation": "file:"
   }
 }
