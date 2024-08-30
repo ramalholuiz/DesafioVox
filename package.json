@@ -1,5 +1,5 @@
 {
-  "name": "saucedemo-automation",
+  "name": "code",
   "version": "1.0.0",
   "description": "Cypress with Java and cucumber",
   "main": "index.js",
@@ -28,6 +28,7 @@
     "reflect-metadata": "0.2.2"
   },
   "dependencies": {
+    "code": "file:",
     "saucedemo-automation": "file:"
   }
 }
