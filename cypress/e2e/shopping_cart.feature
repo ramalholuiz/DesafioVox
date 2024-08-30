@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Adicionar produtos ao carrinho
 
     Cenário: Adicionar um produto ao carrinho

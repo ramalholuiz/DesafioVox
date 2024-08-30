@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Finalizar compra
 
     Cenário: Finalizar compra com sucesso

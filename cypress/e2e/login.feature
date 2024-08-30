@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Login no SauceDemo
 
   Cenário: Login com sucesso
