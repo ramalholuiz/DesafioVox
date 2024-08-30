@@ -1,4 +1,5 @@
-import { Dado, Quando, Entao } from '@badeball/cypress-cucumber-preprocessor';
+import { Given as Dado, When as Quando, Then as Entao } from '@badeball/cypress-cucumber-preprocessor';
+import '../common_steps.cy.js';
 
 Dado('que estou na página de login', () => {
   cy.visit('/');
@@ -40,19 +41,11 @@ Quando('clico no botão de menu', () => {
   cy.get('#react-burger-menu-btn').click();
 });
 
-Dado('que estou logado com {string} e {string}', (username, password) => {
-  cy.visit('https://www.saucedemo.com/v1/');
-  cy.get('[data-test="username"]').type(username);
-  cy.get('[data-test="password"]').type(password);
-  cy.get('[data-test="login-button"]').click();
-  cy.url().should('include', '/inventory.html');
-});
-
 // Quando('clico em logout', () => {
 //   cy.get('#logout_sidebar_link').click();
 // });
 
-Então('devo ser redirecionado para a página de login', () => {
+Entao('devo ser redirecionado para a página de login', () => {
   cy.url().should('include', '/');
 });
 
