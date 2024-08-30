@@ -55,3 +55,7 @@ Dado('que estou logado com {string} e {string}', (username, password) => {
 Então('devo ser redirecionado para a página de login', () => {
   cy.url().should('include', '/');
 });
+
+Quando('pressiono Enter', () => {
+  cy.get('[data-test="password"]').type('{enter}');
+});

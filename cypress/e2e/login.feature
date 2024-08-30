@@ -31,3 +31,10 @@ Funcionalidade: Login no SauceDemo
     Quando clico no menu
     E clico em "Logout"
     Então devo ser direcionado para a página de login
+
+  Cenário: Login usando Enter
+    Dado que estou na página de login
+    Quando insiro o usuário "standard_user"
+    E insiro a senha "secret_sauce"
+    E pressiono Enter
+    Então devo ver a página de inventário
