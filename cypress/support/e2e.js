@@ -1,1 +1,1 @@
-import '@badeball/cypress-cucumber-preprocessor';
+import 'cypress-cucumber-preprocessor';
