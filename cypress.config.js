@@ -9,8 +9,8 @@ module.exports = defineConfig({
   // Configuração do Cucumber preprocessor
   'cypress-cucumber-preprocessor': {
 // Define se os Steps sao Globais ou locais, sendo false como local
-      nonGlobalStepDefinitions: false,
-      step_definitions: './cypress/integration/step_definitions/**/*.js', // steps estão dentro da pasta step_definitions
+      nonGlobalStepDefinitions: true,
+      step_definitions: './cypress/support/step_definitions/**/*.cy.js', // steps estão dentro da pasta step_definitions
   },
   e2e: {
     setupNodeEvents(on, config) {
@@ -18,9 +18,9 @@ module.exports = defineConfig({
     },
 
     chromeWebSecurity: false, // desabilita a politica de proteção do Chrome para automações
-    specPattern: './cypress/e2e/feature/**/*.feature', // Define onde está o arquivo para os testes
+    specPattern: './cypress/e2e/**/*.feature', // Define onde está o arquivo para os testes
     supportFile: false, 
     // supportFile: 'cypress/support/e2e.js', 
-    // baseUrl: 'https://www.saucedemo.com/v1/',
+    baseUrl: 'https://www.saucedemo.com/v1/',
   },
 });
