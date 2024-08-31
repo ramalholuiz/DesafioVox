@@ -1,7 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { ShoppingCartPage } from '../pages/shopping_cart_pages';
+import shoppingCartPage from '.shoppingCartPage.cy.js';
 
-const shoppingCartPage = new ShoppingCartPage();
 
 When( 'I add the product {string} to the cart', ( productName ) => {
     shoppingCartPage.addProductToCart( productName );

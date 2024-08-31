@@ -1,7 +1,10 @@
-export class CheckoutPage {
+/// <reference types ="cypress" />
+
+class CheckoutPage {
     startCheckout() {
         cy.get( '.shopping_cart_link' ).click();
         cy.get( '.btn_action' ).click();
+        return this;
     }
 
     fillShippingInformation( firstName, lastName, postalCode ) {
@@ -9,21 +12,26 @@ export class CheckoutPage {
         cy.get( '[data-test="lastName"]' ).type( lastName );
         cy.get( '[data-test="postalCode"]' ).type( postalCode );
         cy.get( '.btn_primary' ).click();
+        return this;
     }
 
     submitWithoutShippingInformation() {
-        cy.get( '.btn_primary' ).click();
+        return  cy.get( '.btn_primary' ).click();
     }
 
     confirmPurchase() {
-        cy.get( '.btn_action' ).click();
+        return  cy.get( '.btn_action' ).click();
     }
 
     verifySuccessMessage() {
-        cy.get( '.complete-header' ).should( 'have.text', 'THANK YOU FOR YOUR ORDER' );
+        return  cy.get( '.complete-header' ).should( 'have.text', 'THANK YOU FOR YOUR ORDER' );
     }
 
     verifyErrorMessage() {
-        cy.get( '[data-test="error"]' ).should( 'be.visible' );
+        return  cy.get( '[data-test="error"]' ).should( 'be.visible' );
     }
 }
+
+const checkoutPage = new CheckoutPage();
+
+export default checkoutPage;

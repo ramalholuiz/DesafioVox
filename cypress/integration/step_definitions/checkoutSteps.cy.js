@@ -1,7 +1,6 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { CheckoutPage } from '../pages/checkout_page';
+import checkoutPage from '.checkoutPage.cy.js';
 
-const checkoutPage = new CheckoutPage();
 
 When( 'I start the checkout process', () => {
     checkoutPage.startCheckout();
