@@ -1,24 +1,26 @@
 const { defineConfig } = require('cypress');
-const createBundler = require('@bahmutov/cypress-esbuild-preprocessor');
-const addCucumberPreprocessorPlugin = require('@badeball/cypress-cucumber-preprocessor').addCucumberPreprocessorPlugin;
-const createEsbuildPlugin = require('@badeball/cypress-cucumber-preprocessor/esbuild').createEsbuildPlugin;
+// https://www.browserstack.com/guide/cypress-cucumber-preprocessor
+//https://youtu.be/sfMuzYibJTM?si=56GRgvWQQUF2ALgM
 
 module.exports = defineConfig({
+  //conexão com Cypress Cloud
   projectId: 'y3nbuo',
+
+  // Configuração do Cucumber preprocessor
+  'cypress-cucumber-preprocessor': {
+// Define se os Steps sao Globais ou locais, sendo false como local
+      nonGlobalStepDefinitions: true,
+      step_definitions: './cypress/support/step_definitions/**/*.cy.js', // steps estão dentro da pasta step_definitions
+  },
   e2e: {
-    async setupNodeEvents(on, config) {
-      const bundler = createBundler({
-        plugins: [createEsbuildPlugin(config)],
-      });
-
-      on('file:preprocessor', bundler);
-      await addCucumberPreprocessorPlugin(on, config);
-
-      return config;
+    setupNodeEvents(on, config) {
+      return require('./cypress/plugins/index.js')(on, config)
     },
-    specPattern: 'cypress/e2e/**/*.feature',
-    supportFile: 'cypress/support/e2e.js',
-    stepDefinitions: 'cypress/support/step_definitions/**/*.cy.js',
+
+    chromeWebSecurity: false, // desabilita a politica de proteção do Chrome para automações
+    specPattern: './cypress/e2e/**/*.feature', // Define onde está o arquivo para os testes
+    supportFile: false, 
+    // supportFile: 'cypress/support/e2e.js', 
     baseUrl: 'https://www.saucedemo.com/v1/',
   },
 });

@@ -1,54 +1,49 @@
-import { Given as Dado, When as Quando, Then as Entao } from '@badeball/cypress-cucumber-preprocessor';
-import '../common_steps.cy.js';
+import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+// import { LoginPage } from '../pages/LoginPage.cy.js';
 
-Dado('que estou na página de login', () => {
-  cy.visit('/');
-});
+// const loginPage = new LoginPage();
 
-Quando('insiro o usuário {string}', (username) => {
-  cy.get('[data-test="username"]').type(username);
-});
+Given( 'I am on the login page', () => {
+  cy.log('Navigating to the login page');
+  cy.visit( '/' );
+  // loginPage.visit();
+} );
 
-Quando('insiro a senha {string}', (password) => {
-  cy.get('[data-test="password"]').type(password);
-});
+When( 'I enter the username {string}', ( username ) => {
+  cy.get( '[data-test="username"]' ).type( username );
+  // loginPage.enterUsername( username );
+} );
 
-Quando('insiro o usuário inválido {string}', (username) => {
-  cy.get('[data-test="username"]').type(username);
-});
+When( 'I enter the password {string}', ( password ) => {
+  cy.get( '[data-test="password"]' ).type( password );
+  // loginPage.enterPassword( password );
+} );
 
-Quando('insiro a senha inválida {string}', (password) => {
-  cy.get('[data-test="password"]').type(password);
-});
+When( 'I enter the invalid username {string}', ( username ) => {
+  cy.get( '[data-test="username"]' ).type( username );
+  // loginPage.enterUsername( username );
+} );
 
-// Quando('clico em {string}', (buttonText) => {
-//   cy.get('[data-test="login-button"]').click();
-// });
+When( 'I enter the invalid password {string}', ( password ) => {
+  cy.get( '[data-test="password"]' ).type( password );
+  // loginPage.enterPassword( password );
+} );
 
-Quando('clico em {string}', (button) => {
-  cy.contains('button', button).click();
-});
+When( 'I click on Login', () => {
+  cy.get( '#login-button' ).click();
+  // loginPage.clickLogin();
+} );
 
-Entao('devo ver a página de inventário', () => {
-  cy.url().should('include', '/inventory.html');
-});
+Then( 'I should see the inventory page', () => {
+  cy.get( '.product_label' ).should( 'be.visible' );
+} );
 
-Entao('devo ver uma mensagem de erro', () => {
-  cy.get('[data-test="error"]').should('be.visible');
-});
+Then( 'I should see an error message', () => {
+  cy.get( '[data-test="error"]' ).should( 'be.visible' );
+  // loginPage.verifyErrorMessage();
+} );
 
-Quando('clico no botão de menu', () => {
-  cy.get('#react-burger-menu-btn').click();
-});
-
-// Quando('clico em logout', () => {
-//   cy.get('#logout_sidebar_link').click();
-// });
-
-Entao('devo ser redirecionado para a página de login', () => {
-  cy.url().should('include', '/');
-});
-
-Quando('pressiono Enter', () => {
-  cy.get('[data-test="password"]').type('{enter}');
-});
+When( 'I press Enter', () => {
+  cy.get( '[data-test="password"]' ).type( '{enter}' );
+  // loginPage.pressEnter();
+} );

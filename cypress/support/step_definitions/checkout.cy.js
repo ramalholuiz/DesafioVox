@@ -1,30 +1,38 @@
-import { Given as Dado, When as Quando, Then as Entao } from '@badeball/cypress-cucumber-preprocessor';
-import '../common_steps.cy.js';
+import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+// import { CheckoutPage } from '../pages/checkout_page';
 
-Quando('inicio o processo de de checkout', () => {
-    cy.get('.shopping_cart_link').click();
-    cy.get('#checkout').click();
-});
+// const checkoutPage = new CheckoutPage();
 
-Quando('preencho as informações de envio com {string}, {string}, {string}', (firstName, lastName, postalCode) => {
-    cy.get('[data-test="firstName"]').type(firstName);
-    cy.get('[data-test="lastName"]').type(lastName);
-    cy.get('[data-test="postalCode"]').type(postalCode);
-    cy.get('[data-test="continue"]').click();
-});
+When( 'I start the checkout process', () => {
+    cy.get( '.shopping_cart_link' ).click();
+    cy.get( '.btn_action' ).click();
+    // checkoutPage.startCheckout();
+} );
 
-Quando('não preencho as informações de envio', () => {
-    cy.get('[data-test="continue"]').click();
-});
+When( 'I fill in the shipping information with {string}, {string}, {string}', ( firstName, lastName, postalCode ) => {
+    cy.get( '[data-test="firstName"]' ).type( firstName );
+    cy.get( '[data-test="lastName"]' ).type( lastName );
+    cy.get( '[data-test="postalCode"]' ).type( postalCode );
+    cy.get( '.btn_primary' ).click();
+    // checkoutPage.fillShippingInformation( firstName, lastName, postalCode );
+} );
 
-Entao('devo ver a mensagem de sucesso da compra', () => {
-    cy.get('.complete-header').should('have.text', 'THANK YOU FOR YOUR ORDER');
-});
+When( 'I do not fill in the shipping information', () => {
+    cy.get( '.btn_primary' ).click();
+    // checkoutPage.submitWithoutShippingInformation();
+} );
 
-Entao('devo ver uma mensagem de erro', () => {
-    cy.get('[data-test="error"]').should('be.visible');
-});
+When( 'I confirm the purchase', () => {
+    cy.get( '.btn_action' ).click();
+    // checkoutPage.confirmPurchase();
+} );
 
-Quando('confirmo a compra', () => {
-    cy.get('[data-test="finish"]').click();
-});
+Then( 'I should see the success message', () => {
+    cy.get( '.complete-header' ).should( 'have.text', 'THANK YOU FOR YOUR ORDER' );
+    // checkoutPage.verifySuccessMessage();
+} );
+
+Then( 'I should see an error message', () => {
+    cy.get( '[data-test="error"]' ).should( 'be.visible' );
+    // checkoutPage.verifyErrorMessage();
+} );

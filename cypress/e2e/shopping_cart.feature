@@ -1,18 +1,17 @@
-# language: pt
-Funcionalidade: Adicionar produtos ao carrinho
+Feature: Add products to cart
 
-    Cenário: Adicionar um produto ao carrinho
-        Dado que estou logado com "standard_user" e "secret_sauce"
-        Quando adiciono o produto "Sauce Labs Backpack" ao carrinho
-        Então o carrinho deve conter 1 item
+  Scenario: Add a product to the cart
+    Given I am logged in with "standard_user" and "secret_sauce"
+    When I add the product "Sauce Labs Backpack" to the cart
+    Then the cart should contain 1 item
 
-    Cenário: Adicionar múltiplos produtos ao carrinho
-        Dado que estou logado com "standard_user" e "secret_sauce"
-        quando adiciono os produtos "Sauce Labs Backpack" e "Sauce Labs Bike Ligth"
-        Então o carrinho deve conter 2 itens
+  Scenario: Add multiple products to the cart
+    Given I am logged in with "standard_user" and "secret_sauce"
+    When I add the products "Sauce Labs Backpack" and "Sauce Labs Bike Light" to the cart
+    Then the cart should contain 2 items
 
-    Cenário: Remover um produto do carrinho
-        Dado que estou logado com "standard_user" e "secret_sauce"
-        E adiciono o produto "Sauce Labs Backpack" ao carrinho
-        Quando removo o produto "Sauce Labs Backpack" do carrinho
-        Então o carrinho deve estar vazio
+  Scenario: Remove a product from the cart
+    Given I am logged in with "standard_user" and "secret_sauce"
+    And I add the product "Sauce Labs Backpack" to the cart
+    When I remove the product "Sauce Labs Backpack" from the cart
+    Then the cart should be empty
